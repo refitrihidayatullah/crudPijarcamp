@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+// import method override (put/path)
+const methodOverride = require('method-override');
 // import mongoose
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/pijarcamp', {
@@ -19,6 +21,8 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+// use method ovveride
+app.use(methodOverride('_method'));
 
 app.use(logger('dev'));
 app.use(express.json());

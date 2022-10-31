@@ -4,7 +4,7 @@
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProduk">
    add produk
   </button>
-        <table class="table">
+        <table class="table" id="dataTable">
             <thead>
                 <tr>
                     <th scope="col">No</th>
@@ -34,13 +34,33 @@
                             <%= produk[i].jumlah; %>
                         </td>
                         <td>
-                            <a href="" class="btn btn-sm btn-warning">edit</a>
-                            <a href="" class="btn btn-sm btn-danger">delete</a>
+                            <form action="/admin/produk/<%= produk[i].id  %>?_method=DELETE" method="POST">
+                                <a href="javascript:void()" type="button" class="btn btn-sm btn-warning button-update" data-id="<%= produk[i].id %>" data-nama_produk="<%= produk[i].nama_produk %>" data-keterangan="<%= produk[i].keterangan %>" data-harga="<%= produk[i].harga %>" data-jumlah="<%= produk[i].jumlah %>">edit</a>
+                                <button type="submit" class="btn btn-sm btn-danger">delete</button>
+                            </form>
                         </td>
                     </tr>
                     <% } %>
             </tbody>
         </table>
     </div>
-    <%- include('../produk/add_modal.ejs') %>
-        <%- include('../partials/footer.ejs') %>
+    <script src="https://code.jquery.com/jquery-3.6.1.slim.js" integrity="sha256-tXm+sa1uzsbFnbXt8GJqsgi2Tw+m4BLGDof6eUPjbtk=" crossorigin="anonymous"></script>
+    <%- include('../produk/edit_modal.ejs') %>
+        <%- include('../produk/add_modal.ejs') %>
+            <script>
+                $('#dataTable').on('click', '.button-update', function() {
+                    let id = $(this).data('id');
+                    let nama_produk = $(this).data('nama_produk');
+                    let keterangan = $(this).data('keterangan');
+                    let harga = $(this).data('harga');
+                    let jumlah = $(this).data('jumlah');
+                    // console.log(id + nama_produk + keterangan + harga + jumlah)
+                    $('#editProduk').modal('show');
+                    $('.id').val(id);
+                    $('.nama_produk').val(nama_produk);
+                    $('.keterangan').val(keterangan);
+                    $('.harga').val(harga);
+                    $('.jumlah').val(jumlah);
+                });
+            </script>
+            <%- include('../partials/footer.ejs') %>
