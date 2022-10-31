@@ -1,0 +1,35 @@
+<!-- Modal -->
+<div class="modal fade" id="addProduk" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Produk</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/admin/produk" method="POST">
+                    <div class="mb-3">
+                        <label for="nama_produk" class="form-label">Nama Produk</label>
+                        <input type="text" class="form-control" id="nama_produk" name="nama_produk">
+                    </div>
+                    <div class="mb-3">
+                        <label for="keterangan" class="form-label">Keterangan</label>
+                        <input type="text" class="form-control" id="keterangan" name="keterangan">
+                    </div>
+                    <div class="mb-3">
+                        <label for="harga" class="form-label">Harga</label>
+                        <input type="number" class="form-control" id="harga" name="harga">
+                    </div>
+                    <div class="mb-3">
+                        <label for="jumlah" class="form-label">Jumlah</label>
+                        <input type="text" class="form-control" id="jumlah" name="jumlah">
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
